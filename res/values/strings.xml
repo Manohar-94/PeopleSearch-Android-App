@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PeopleSearch</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="students">Students</string>
+    <string name="faculties">Faculties</string>
+    <string name="services">Services</string>
+    <string name="groups">Groups</string>
+    <string name="Search">Search</string>
+    <string name="advanced_search">Advanced Search</string>
+    <string name="add_to_contacts">Add to Contacts</string>
+    <string name="back">Back</string>
+    
+    <string-array name="course">
+        <item>Select course</item>
+        <item>meta</item>
+        <item>cse</item>
+        <item>MSM</item>
+    </string-array>
+    
+    <string-array name="year">
+        <item>Select year</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    
+    <string-array name="fac_dep">
+        <item>Select faculty department</item>
+        <item>meta</item>
+        <item>cse</item>
+        <item>electrical</item>
+    </string-array>
+    
+    <string-array name="fac_des">
+        <item>Select faculty designation</item>
+        <item>prof</item>
+        <item>assistant prof</item>
+    </string-array>
+    
+    <string-array name="ser_list">
+        <item>Select services</item>
+        <item>banks</item>
+        <item>hospitals</item>
+    </string-array>
+    
+    <string-array name="grou_list">
+        <item>Select group</item>
+        <item>img</item>
+        <item>geek gazette</item>
+    </string-array>
+
+</resources>
