@@ -13,6 +13,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
 
 public class MainActivity extends SherlockFragmentActivity {
@@ -116,6 +117,18 @@ public class MainActivity extends SherlockFragmentActivity {
 				 
 	}
 	
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch(item.getItemId()){
+		case R.id.profile:
+			return true;
+		case R.id.logout:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		
+	}
+	
 	
 public void shareData(String srch_str){
 	FragmentManager fm = getSupportFragmentManager();
@@ -141,4 +154,5 @@ public void shareData(String srch_str){
 	}
 	
 }
+
 }

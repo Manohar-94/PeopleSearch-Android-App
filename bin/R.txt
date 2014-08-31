@@ -313,6 +313,7 @@ int id listView2 0x7f040046
 int id listView3 0x7f040058
 int id listView4 0x7f04004f
 int id login 0x7f04005a
+int id logout 0x7f04006e
 int id menu_search 0x7f04006c
 int id next_all 0x7f040038
 int id next_faculties 0x7f040044
@@ -326,6 +327,7 @@ int id previous_faculties 0x7f040043
 int id previous_groups 0x7f04004c
 int id previous_services 0x7f040055
 int id previous_students 0x7f040065
+int id profile 0x7f04006d
 int id relativeLayout1 0x7f040064
 int id relativeLayout2 0x7f040042
 int id relativeLayout3 0x7f040054

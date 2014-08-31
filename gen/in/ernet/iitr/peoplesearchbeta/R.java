@@ -986,6 +986,7 @@ containing a value of this type.
         public static final int listView3=0x7f040058;
         public static final int listView4=0x7f04004f;
         public static final int login=0x7f04005a;
+        public static final int logout=0x7f04006e;
         public static final int menu_search=0x7f04006c;
         public static final int next_all=0x7f040038;
         public static final int next_faculties=0x7f040044;
@@ -999,6 +1000,7 @@ containing a value of this type.
         public static final int previous_groups=0x7f04004c;
         public static final int previous_services=0x7f040055;
         public static final int previous_students=0x7f040065;
+        public static final int profile=0x7f04006d;
         public static final int relativeLayout1=0x7f040064;
         public static final int relativeLayout2=0x7f040042;
         public static final int relativeLayout3=0x7f040054;
