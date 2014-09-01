@@ -1,13 +1,25 @@
 package in.ernet.iitr.peoplesearchbeta;
 
+import in.ernet.iitr.peoplesearchbeta.Fragment_students.AlertDialogFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -20,6 +32,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	public static int tag;
 	public ActionBar actionbar;
+	public static final String PREFS_NAME = "MyPrefsFile";
+	String session_key="",name="",info="",enrollment_no="";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,11 +132,47 @@ public class MainActivity extends SherlockFragmentActivity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+		
 		switch(item.getItemId()){
 		case R.id.profile:
+			
+			Fragment_students ss = new Fragment_students();
+			name = settings.getString("name", "");
+			info = settings.getString("info", "");
+			enrollment_no = settings.getString("enrollment_no", "");
+			AlertDialogFragment a = ss.new AlertDialogFragment(info, enrollment_no, name);
+			a.show(getSupportFragmentManager(), "alertdialog");
+			
 			return true;
+			
 		case R.id.logout:
+			//HttpClient httpClient = new DefaultHttpClient();
+			HttpPost httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/logout_user/");
+			session_key = settings.getString("session_key", "");
+			List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
+			namevaluepair.add(new BasicNameValuePair("session_key",session_key));
+			try{
+				SplashScreen s = new SplashScreen();
+				httpPost.setEntity(new UrlEncodedFormEntity(namevaluepair));
+				String result = s.new ConnectTask().execute(httpPost).get();
+				s.result = result;
+				s.parseData();
+				if(s.msg.equals("YES")){
+					Toast toast = Toast.makeText(getApplicationContext(),"logged out successfully" , Toast.LENGTH_SHORT);
+					toast.show();
+					SharedPreferences.Editor editor = settings.edit();
+					editor.putString("session_key", session_key);
+					editor.commit();
+					finish();
+				}
+			}
+			catch(Exception e){
+				e.printStackTrace();
+			}
+			
 			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}

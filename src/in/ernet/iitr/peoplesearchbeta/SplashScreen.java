@@ -70,7 +70,7 @@ public class SplashScreen extends Activity{
 		else if(session_key != ""){
 			try{
 
-				httpClient = new DefaultHttpClient();
+				//httpClient = new DefaultHttpClient();
 				httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/check_session/");
 
 				List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
@@ -81,7 +81,7 @@ public class SplashScreen extends Activity{
 				catch(Exception e){
 					e.printStackTrace();
 				}
-				result=new ConnectTask().execute(httpPost).get();
+				result = new ConnectTask().execute(httpPost).get();
 				parseData();
 				Toast toast = Toast.makeText(getApplicationContext(),result, Toast.LENGTH_LONG);
 				toast.show();
@@ -89,6 +89,8 @@ public class SplashScreen extends Activity{
 				editor.putString("session_key","");
 				editor.commit();
 				if(msg.equals("YES")){
+					
+					editor.commit();
 					Intent intent = new Intent(this,MainActivity.class);
 					startActivity(intent);
 				}
@@ -108,7 +110,7 @@ public class SplashScreen extends Activity{
 		username = usertext.getText().toString();
 		password = passtext.getText().toString();
 
-		httpClient = new DefaultHttpClient();
+		//httpClient = new DefaultHttpClient();
 		httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/channeli_login/");
 
 		List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(2);
@@ -132,6 +134,10 @@ public class SplashScreen extends Activity{
 		Toast toast = Toast.makeText(getApplicationContext(),result, Toast.LENGTH_LONG);
 		toast.show();
 		if(msg.equals("YES")){
+			editor.putString("name", name);
+			editor.putString("info", info);
+			editor.putString("enrollment_no", username);
+			editor.commit();
 			Intent intent = new Intent(this,MainActivity.class);
 			startActivity(intent);
 		}
@@ -161,7 +167,7 @@ public class SplashScreen extends Activity{
 			InputStream isr = null;
 			String result="";
 			try{
-
+				httpClient = new DefaultHttpClient();
 				HttpResponse response = httpClient.execute(httpPosts[0]);
 				HttpEntity entity = response.getEntity();
 				isr = entity.getContent();
