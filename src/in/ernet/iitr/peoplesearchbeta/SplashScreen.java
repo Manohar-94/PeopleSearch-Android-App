@@ -86,8 +86,8 @@ public class SplashScreen extends Activity{
 				Toast toast = Toast.makeText(getApplicationContext(),result, Toast.LENGTH_LONG);
 				toast.show();
 
-				editor.putString("session_key","");
-				editor.commit();
+				/*editor.putString("session_key","");
+				editor.commit();*/
 				if(msg.equals("YES")){
 					
 					editor.commit();

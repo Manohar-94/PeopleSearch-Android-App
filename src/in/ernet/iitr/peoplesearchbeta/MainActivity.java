@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -148,7 +149,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			
 		case R.id.logout:
 			//HttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/logout_user/");
+			HttpPost httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/logout/");
 			session_key = settings.getString("session_key", "");
 			List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
 			namevaluepair.add(new BasicNameValuePair("session_key",session_key));
@@ -158,11 +159,13 @@ public class MainActivity extends SherlockFragmentActivity {
 				String result = s.new ConnectTask().execute(httpPost).get();
 				s.result = result;
 				s.parseData();
-				if(s.msg.equals("YES")){
+				Log.e("Log_tag",s.msg);
+				if(s.msg.equals("OK")){
+					Log.e("Log_tag",s.msg);
 					Toast toast = Toast.makeText(getApplicationContext(),"logged out successfully" , Toast.LENGTH_SHORT);
 					toast.show();
 					SharedPreferences.Editor editor = settings.edit();
-					editor.putString("session_key", session_key);
+					editor.putString("session_key","");
 					editor.commit();
 					finish();
 				}
