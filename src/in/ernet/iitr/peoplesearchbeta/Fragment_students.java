@@ -25,8 +25,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.Contacts.Intents;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.Intents;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.util.TypedValue;
@@ -52,7 +52,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 @SuppressWarnings("deprecation")
 public class Fragment_students extends SherlockFragment implements OnItemSelectedListener{
 
-	private String course="",year="",srch_str="",role="Students",faculty_department="",faculty_designation="", services_list="",groups_list="";
+	private String course="",year="",srch_str="",role="stud",faculty_department="",faculty_designation="", services_list="",groups_list="";
 	private Spinner spinner1 , spinner2;
 	JSONObject jobj , json;
 	JSONArray json1;

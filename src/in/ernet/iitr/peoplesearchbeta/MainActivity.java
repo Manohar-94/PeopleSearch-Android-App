@@ -35,14 +35,21 @@ public class MainActivity extends SherlockFragmentActivity {
 	public ActionBar actionbar;
 	public static final String PREFS_NAME = "MyPrefsFile";
 	String session_key="",name="",info="",enrollment_no="";
+	/*private ViewPager viewPager;
+	private TabsPagerAdapter mAdapter;*/
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//viewPager = (ViewPager) findViewById(R.id.pager);
 		actionbar = getSupportActionBar();
+		//mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+		
+		//viewPager.setAdapter(mAdapter);
 		actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		//actionbar.setHomeButtonEnabled(false);
 		actionbar.setTitle("Peoplesearch");
 		
 		ActionBar.Tab FragAll = actionbar.newTab().setText("All");
@@ -70,6 +77,28 @@ public class MainActivity extends SherlockFragmentActivity {
 		actionbar.addTab(FragGrou);
 		
 		actionbar.setBackgroundDrawable(new ColorDrawable(Color.RED));
+		
+		/*viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				// TODO Auto-generated method stub
+				actionbar.setSelectedNavigationItem(position);
+				tag = actionbar.getSelectedNavigationIndex();
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});*/
 				
 	}
 	
@@ -82,6 +111,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		@Override
 		public void onTabSelected(Tab tab , FragmentTransaction ft){
+			//viewPager.setCurrentItem(tab.getPosition());
 			ft.replace(R.id.fragment_container, fragment , "current_tab" );
 			tag = actionbar.getSelectedNavigationIndex();
 			}
@@ -149,7 +179,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			
 		case R.id.logout:
 			//HttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/logout/");
+			HttpPost httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/index/logout/");
 			session_key = settings.getString("session_key", "");
 			List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
 			namevaluepair.add(new BasicNameValuePair("session_key",session_key));
@@ -185,6 +215,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 public void shareData(String srch_str){
 	FragmentManager fm = getSupportFragmentManager();
+	
 	if(tag==0){
 		Fragment_all fragment = (Fragment_all) fm.findFragmentByTag("current_tab");
 		fragment.update(srch_str);

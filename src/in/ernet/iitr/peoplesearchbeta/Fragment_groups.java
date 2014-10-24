@@ -53,7 +53,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 @SuppressWarnings("deprecation")
 public class Fragment_groups extends SherlockFragment implements OnItemSelectedListener{
 	
-	private String course="",year="",srch_str="",role="Groups",faculty_department="",faculty_designation="", services_list="",groups_list="";
+	private String course="",year="",srch_str="",role="groups",faculty_department="",faculty_designation="", services_list="",groups_list="";
 	private Spinner spinner1;
 	JSONObject jobj , json;
 	JSONArray json1;

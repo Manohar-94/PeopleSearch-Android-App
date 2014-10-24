@@ -47,7 +47,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 @SuppressWarnings("deprecation")
 public class Fragment_services extends SherlockFragment implements OnItemSelectedListener{
 
-	private String course="",year="",srch_str="",role="Services",faculty_department="",faculty_designation="", services_list="",groups_list="";
+	private String course="",year="",srch_str="",role="serv",faculty_department="",faculty_designation="", services_list="",groups_list="";
 	private Spinner spinner1;
 	JSONObject jobj , json;
 	JSONArray json1;
