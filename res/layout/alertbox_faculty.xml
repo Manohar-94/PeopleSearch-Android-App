@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <include 
+        android:id="@+id/faculty_list"
+        layout="@layout/list_faculty" />
+    
+    <TextView
+        android:id="@+id/faculty_designation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/faculty_list"
+        android:layout_marginLeft="20dp"/>
+    
+    <TextView
+        android:id="@+id/faculty_office_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/faculty_designation"
+        android:layout_marginLeft="20dp" />
+</RelativeLayout>

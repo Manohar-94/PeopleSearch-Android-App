@@ -1,12 +1,9 @@
 package in.ernet.iitr.peoplesearchbeta;
 
-import in.ernet.iitr.peoplesearchbeta.Fragment_students.AlertDialogFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -19,8 +16,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
@@ -168,12 +163,12 @@ public class MainActivity extends SherlockFragmentActivity {
 		switch(item.getItemId()){
 		case R.id.profile:
 			
-			Fragment_students ss = new Fragment_students();
+			/*Fragment_students ss = new Fragment_students();
 			name = settings.getString("name", "");
 			info = settings.getString("info", "");
 			enrollment_no = settings.getString("enrollment_no", "");
 			AlertDialogFragment a = ss.new AlertDialogFragment(info, enrollment_no, name);
-			a.show(getSupportFragmentManager(), "alertdialog");
+			a.show(getSupportFragmentManager(), "alertdialog");*/
 			
 			return true;
 			
@@ -184,9 +179,9 @@ public class MainActivity extends SherlockFragmentActivity {
 			List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
 			namevaluepair.add(new BasicNameValuePair("session_key",session_key));
 			try{
-				SplashScreen s = new SplashScreen();
+				/*
 				httpPost.setEntity(new UrlEncodedFormEntity(namevaluepair));
-				String result = s.new ConnectTask().execute(httpPost).get();
+				String result = new ConnectTask().execute(httpPost).get();
 				s.result = result;
 				s.parseData();
 				Log.e("Log_tag",s.msg);
@@ -198,7 +193,7 @@ public class MainActivity extends SherlockFragmentActivity {
 					editor.putString("session_key","");
 					editor.commit();
 					finish();
-				}
+				}*/
 			}
 			catch(Exception e){
 				e.printStackTrace();

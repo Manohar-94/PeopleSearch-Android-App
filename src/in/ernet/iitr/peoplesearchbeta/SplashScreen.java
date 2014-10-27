@@ -1,20 +1,16 @@
 package in.ernet.iitr.peoplesearchbeta;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import networking_and_object_handling.ConnectTask;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +18,6 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -159,7 +154,7 @@ public class SplashScreen extends Activity{
 			e.printStackTrace();
 		}
 	}
-	class ConnectTask extends AsyncTask<HttpPost, Void, String>{
+	/*class ConnectTask extends AsyncTask<HttpPost, Void, String>{
 
 		@Override
 		protected String doInBackground(HttpPost... httpPosts) {
@@ -195,7 +190,7 @@ public class SplashScreen extends Activity{
 
 		}
 
-	}
+	}*/
 	public void onResume(){
 		super.onResume();
 		Log.e("log_tag", "inside resume");

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <include 
+        android:id="@+id/student_list"
+        layout="@layout/list_student"/>
+    
+    <TextView
+        android:id="@+id/student_enrollment_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/student_list"
+        android:layout_marginLeft="20dp" />
+    
+    <TextView
+        android:id="@+id/student_bhawan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/student_enrollment_no"
+        android:layout_marginLeft="20dp" />
+    
+    <TextView
+        android:id="@+id/student_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/student_bhawan"
+        android:layout_marginLeft="20dp" />
+    
+</RelativeLayout>
