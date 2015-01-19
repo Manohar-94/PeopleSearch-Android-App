@@ -12,11 +12,12 @@ import adapter.PeopleListAdapter;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -40,6 +41,8 @@ public class Fragment_students extends SherlockFragment implements OnItemSelecte
 	public View storeView;
 	private int temp=0,counter=0;
 	SlidingDrawer sd;
+	ArrayList<ResultObject> list;
+	PeopleListAdapter adapter;
 
 	public View onCreateView(LayoutInflater inflater , ViewGroup container , Bundle savedInstanceState){
 
@@ -126,13 +129,14 @@ public class Fragment_students extends SherlockFragment implements OnItemSelecte
 		ConnectAndParse cp = new ConnectAndParse();
 		cp.setArguments(course,year,srch_str,role,faculty_department,
 				faculty_designation,services_list,groups_list, counter);
-		ArrayList<ResultObject> list = new ArrayList<ResultObject>();
+		list = new ArrayList<ResultObject>();
 		list = cp.parseData(cp.getData());
 		
 		lv = (ListView) storeView.findViewById(R.id.listView1);
-		PeopleListAdapter adapter = new PeopleListAdapter(this.getActivity(),list);
+		adapter = new PeopleListAdapter(this.getActivity(),list);
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(new MyClickListener(list));
+		lv.setOnScrollListener(new MyScrollListener(cp,counter));
 		
 	}
 	
@@ -150,6 +154,42 @@ public class Fragment_students extends SherlockFragment implements OnItemSelecte
 			ad.show(getFragmentManager(), "alertdialog");
 		}
 
+	}
+	
+	class MyScrollListener implements OnScrollListener{
+
+		ConnectAndParse cp;
+		int counter;
+		public MyScrollListener(ConnectAndParse cp, int counter){
+			this.cp=cp;
+			this.counter=counter;
+		}
+		@Override
+		public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@SuppressLint("NewApi")
+		@Override
+		public void onScrollStateChanged(AbsListView lv, int scrollstate) {
+			// TODO Auto-generated method stub
+			if(scrollstate==SCROLL_STATE_IDLE){
+				if(lv.getLastVisiblePosition() >= lv.getCount()-1-2){
+					//request to be sent
+					ArrayList<ResultObject> new_list = new ArrayList<ResultObject>();
+					new_list = cp.parseData(cp.getData());
+					list.addAll(new_list);
+					adapter.addAll(list);
+					adapter.notifyDataSetChanged();
+/*					PeopleListAdapter adapter = new PeopleListAdapter(getActivity(), new_list);
+					lv.setAdapter(adapter);
+					lv.setOnItemClickListener(new MyClickListener(list));
+					lv.setOnScrollListener(new MyScrollListener(cp,counter));					
+*/				}
+			}
+		}
+		
 	}
 	}
 

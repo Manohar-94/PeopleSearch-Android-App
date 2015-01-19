@@ -66,7 +66,7 @@ public class SplashScreen extends Activity{
 			try{
 
 				//httpClient = new DefaultHttpClient();
-				httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/check_session/");
+				httpPost = new HttpPost("http://172.25.55.5:8000/peoplesearch/check_session/");
 
 				List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(1);
 				namevaluepair.add(new BasicNameValuePair("session_key",session_key));
@@ -106,7 +106,7 @@ public class SplashScreen extends Activity{
 		password = passtext.getText().toString();
 
 		//httpClient = new DefaultHttpClient();
-		httpPost = new HttpPost("http://192.168.121.5:8080/peoplesearch/channeli_login/");
+		httpPost = new HttpPost("http://172.25.55.5:8000/peoplesearch/channeli_login/");
 
 		List<NameValuePair> namevaluepair = new ArrayList<NameValuePair>(2);
 		namevaluepair.add(new BasicNameValuePair("username",username));
@@ -154,43 +154,7 @@ public class SplashScreen extends Activity{
 			e.printStackTrace();
 		}
 	}
-	/*class ConnectTask extends AsyncTask<HttpPost, Void, String>{
-
-		@Override
-		protected String doInBackground(HttpPost... httpPosts) {
-			// TODO Auto-generated method stub
-			InputStream isr = null;
-			String result="";
-			try{
-				httpClient = new DefaultHttpClient();
-				HttpResponse response = httpClient.execute(httpPosts[0]);
-				HttpEntity entity = response.getEntity();
-				isr = entity.getContent();
-
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-
-			//convert response to string
-			try{
-				BufferedReader reader = new BufferedReader(new InputStreamReader(isr,"iso-8859-1"),8);
-				StringBuilder sb = new StringBuilder();
-				String line = null;
-				while((line = reader.readLine()) != null){
-					sb.append(line+"\n");
-				}
-				isr.close();
-				result = sb.toString();
-			}
-			catch(Exception e){
-				Log.e("log_tag", "Error  converting result "+e.toString());
-			}
-			return result;
-
-		}
-
-	}*/
+	
 	public void onResume(){
 		super.onResume();
 		Log.e("log_tag", "inside resume");

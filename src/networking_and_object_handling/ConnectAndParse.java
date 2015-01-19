@@ -46,7 +46,7 @@ public class ConnectAndParse extends SherlockFragment{
 	public String getData(){
 		String result="";
 		InputStream isr = null;
-		String url = "http://192.168.121.5:8080/peoplesearch/index/";
+		String url = "http://172.25.55.5:8000/peoplesearch/index/";
 		StringBuilder sbuilder = new StringBuilder();
 		sbuilder.append(url+"?name="+srch_str+"&role="+role+"&course="+course+
 				"&year="+year+"&faculty_department="+faculty_department+"&faculty_designation="+faculty_designation+
